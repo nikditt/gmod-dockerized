@@ -33,6 +33,10 @@ LABEL Name=repo Version=0.0.1
 
 RUN apt-get -y update && apt-get install -y fortunes
 
+EXPOSE 27015/tcp
+EXPOSE 27015/udp
+EXPOSE 27005/tcp
+EXPOSE 27005/udp
 
 CMD ["sh", "-c", "/usr/games/fortune -a | cowsay"]
 
