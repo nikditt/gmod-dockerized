@@ -10,8 +10,6 @@
 
 - [Debian 12](https://www.debian.org/)
 
-
-
 Ports that need to be open [here]([Source Dedicated Server - Valve Developer Community](https://developer.valvesoftware.com/wiki/Source_Dedicated_Server#Connectivity))
 
 actions are marked like **this**
@@ -34,6 +32,22 @@ check for sufficient permissions
 groups vboxuser
 ```
 
+Update OS
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+Install curl
+
+```bash
+sudo apt install curl
+```
+
+##Downloading SteamCMD
+
+
+
 Add user for SteamCMD
 
 ```bash
@@ -51,3 +65,40 @@ cd /home/steam
 ```
 
 Install SteamCMD
+
+Dependencies (on VM steam is not in sudo by default):
+
+```bash
+sudo apt-get install lib32gcc-s1
+```
+
+Make steam sudo (probably not needed)
+
+```bash
+sudo usermod -aG sudo steam
+```
+
+```bash
+sudo -u steam -s
+```
+
+creating new directory and navigating to it
+
+```bash
+mkdir ~/Steam && cd ~/Steam
+```
+
+download and extract steamCMD
+
+```bash
+curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+```
+
+
+
+##Starting SteamCMD
+
+```bash
+cd ~/Steam
+./steamcmd.sh
+```
