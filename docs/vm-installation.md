@@ -46,8 +46,6 @@ sudo apt install curl
 
 ##Downloading SteamCMD
 
-
-
 Add user for SteamCMD
 
 ```bash
@@ -94,11 +92,16 @@ download and extract steamCMD
 curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 ```
 
-
-
 ##Starting SteamCMD
 
 ```bash
 cd ~/Steam
 ./steamcmd.sh
 ```
+
+REMINDER:
+To download game servers, you can log in anonymously or with a Steam 
+Account. Some servers require a Steam Account. It's recommended to 
+create a dedicated Steam account for servers, for security reasons.
+
+***Create a new Steam account***
