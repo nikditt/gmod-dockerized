@@ -27,18 +27,26 @@
 # used base-image
 FROM debian:latest
 
-
 LABEL Name=repo Version=0.0.1
 
+# change directory within the container
+WORKDIR /home/gmod
 
-RUN apt-get -y update && apt-get install -y fortunes
+# update packages and install prerequisites for gmod
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install -y lib32gcc1 wget tar \
+    && apt-get clean
+
+
+# download SteamCMD and install gmod
+RUN wget -O steamcmd_linux.tar.gz https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
 
 # port forwarding for the needed ports for steam server
-
 EXPOSE 27015/tcp
 EXPOSE 27015/udp
 EXPOSE 27005/tcp
 EXPOSE 27005/udp
 
-CMD ["sh", "-c", "/usr/games/fortune -a | cowsay"]
+CMD ["./home/gmod/srcds_run", "-game garrysmod", "-console", "+maxplayers 16", "+map gm_construct"]
 
